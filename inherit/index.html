@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        
+</body>
+<script>
+    function staff(){
+        this.company = 'ABC';
+    }
+    staff.prototype.companyName = function(){
+        return this.company;
+    }
+
+    function employee(name,profession){
+        this.employeeName = name;
+        this.profession = profession;
+    }
+
+    //继承 staff
+    employee.prototype = new staff();
+    
+</script>
+</html>

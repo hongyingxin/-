@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+</body>
+<script>
+
+//  浅拷贝
+
+  function cloneShallow(source) {
+    var target = {};
+    for(var key in source){
+//      JavaScript中Object对象原型上的hasOwnProperty()用来判断一个属性是定义在对象本身而不是继承自原型链。
+      if(Object.prototype.hasOwnProperty.call(source,key)){
+        target[key] = source[key]
+      }
+    }
+    return target;
+  }
+
+  /*测试用例*/
+  var a = {
+    name:'杨',
+    book:{
+      title:'Bo Hao',
+      price:'45'
+    },
+    a1:undefined,
+    a2:null,
+    a3:123
+  }
+
+//  var b = cloneShallow(a)
+//  console.log(b)
+
+//  a.name = '赵日天';
+//  a.book.price = '50';
+
+
+
+//  深拷贝
+  function  cloneDeep1(source) {
+    var target = {};
+    for(var key in source){
+      if(Object.prototype.hasOwnProperty.call(source,key)){
+        if(typeof source[key] === 'object'){
+          target[key] = cloneDeep1(source[key])
+        }else{
+          target[key] = source[key]
+        }
+      }
+    }
+    return target;
+  }
+
+//  var c = cloneDeep1(a);
+//  console.log(c)
+
+//  a.name = '赵日天';
+//  a.book.price = '50';
+
+
+  /*存在的缺陷
+  * 1 没有对传入参数进行校验，传入null时应该返回Null而不是{}
+  * 2 对象的判断逻辑不严谨，因为 typeof null === 'object'
+  * 3 没有考虑数组的兼容
+  * */
+
+  function isObject(obj) {
+    console.log('对象验证 '+ obj)
+    return typeof obj === 'object' && obj != null;
+  }
+
+  /*进一步完善*/
+  function  cloneDeep2(source) {
+
+      if(!isObject(source)) return source;    //非对象返回自身
+
+      var target = Array.isArray(source)?[]:{};
+      for(var key in source){
+        if(Object.prototype.hasOwnProperty.call(source,key)){
+          if(isObject(source[key])){
+            target[key] = cloneDeep2(source[key]);
+          }else{
+            target[key] = source[key];
+          }
+        }
+      }
+      return target;
+  }
+
+//  var b = cloneDeep2(a);
+//  console.log(b);
+
+//  a.name = '赵日天';
+//  a.book.price = '50';
+
+
+  var test = [1,2,3,4,5,6,{a:1},{b:2},10];
+  var b = cloneDeep2(test)
+  console.log(b)
+
+  test[6].a = 5
+  test[7].b = 4;
+  console.log(test)
+</script>
+</html>
