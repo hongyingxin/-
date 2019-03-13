@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>闭包</title>
+</head>
+<body>
+
+</body>
+<script>
+  function func() {
+    var a = 1,b = 2;
+
+    function closure() {    //闭包
+      return a + b;     //返回a+b的值
+    }
+    return closure;
+  }
+
+  function makeAdder(x) {
+    return function (y) {
+      return x + y;
+    };
+  }
+
+  var add5 = makeAdder(5);
+  var add10 = makeAdder(10);
+
+  
+  function arrFunc() {
+    var arr = [];
+    for(var i = 0; i < 10; i++){
+      arr[i] = function (num) {
+        return function () {
+          return num
+        };
+      }(i);
+    }
+    return arr;
+  }
+
+  var name = 'window';
+  var obj = {
+    name:'object',
+    getName:function () {
+      return function () {
+        return this.name;
+      }
+    }
+  }
+
+
+  //编写一个函数，该函数将遍历列表并在延迟3秒后打印每个元素的索引
+
+//  const arr = [5,10,15,20,25]
+//  for(var i = 0 ;i < arr.length; i++){
+//    setTimeout(function () {
+//      console.log("The inde of this number is " + i)
+//    },3000)
+//  }
+
+  //  The inde of this number is 5
+  //原因：setTimeout函数创建了一个可以访问外部作用于的函数（闭包）
+
+
+  //let  不存在变量提升
+
+//  const arr = [5,10,15,20,25]
+//  for(let i = 0; i < arr.length; i++){
+//    setTimeout(function () {
+//      console.log("The inde of this number is " + i)
+//    },3000)
+//  }
+
+//  立即执行函数
+  const arr = [5,10,15,20,25]
+  for(var i = 0; i < arr.length; i++){
+    setTimeout(function (index) {
+      return function () {
+        console.log("The inde of this number is " + index)
+      }
+    }(i),3000)
+  }
+
+
+
+</script>
+</html>

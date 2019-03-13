@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Js事件</title>
+</head>
+<body>
+    <ul id="test">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+</body>
+<script>
+
+//  普通写法
+//  window.onload = function () {
+//    var $ul = document.getElementById('test');
+//    var $li = $ul.getElementsByTagName('li');
+//
+//    for(var i = 0; i < $li.length; i++){
+//      $li.onclick = function () {
+//        alert(123);
+//      }
+//    }
+//  }
+
+//  事件委托
+
+  window.onload = function () {
+    var $ul = document.getElementById('test');
+    $ul.onclick = function (event) {
+      var event = event || window.event;
+//      Event对象提供了一个属性叫target，可以返回事件的目标节点，称为事件源，
+//      target就可以表示为当前的事件操作的dom，这个是有兼容性的，标准浏览器用ev.target，IE浏览器用event.srcElement
+      var target = event.target || event.srcElement;
+      if(target.nodeName.toLowerCase() == 'li'){
+        alert(123)
+      }
+    }
+  }
+
+
+</script>
+</html>
