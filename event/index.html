@@ -8,7 +8,7 @@
 </head>
 <body>
     <ul id="test">
-      <li></li>
+      <li class="sayHi"></li>
       <li></li>
       <li></li>
       <li></li>
@@ -35,6 +35,7 @@
     var $ul = document.getElementById('test');
     $ul.onclick = function (event) {
       var event = event || window.event;
+      console.log(event)
 //      Event对象提供了一个属性叫target，可以返回事件的目标节点，称为事件源，
 //      target就可以表示为当前的事件操作的dom，这个是有兼容性的，标准浏览器用ev.target，IE浏览器用event.srcElement
       var target = event.target || event.srcElement;
