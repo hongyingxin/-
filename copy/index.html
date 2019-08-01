@@ -12,6 +12,47 @@
 <script>
 
 //  浅拷贝
+//  1
+function copy(count) {
+  var target = {}
+  for(var key in count){
+    if(Object.prototype.hasOwnProperty.call(count,key)){
+      target[key] = count[key]
+    }
+  }
+  return target
+}
+
+//  2
+function copy2(count) {
+  return Object.assign({},count)
+}
+
+//  3
+function copy3(count) {
+  return {...count}
+}
+
+//  深拷贝
+//  1
+function depth(count) {
+  return JSON.parse(JSON.stringify(count))
+}
+
+//  2
+function depth1(count) {
+  var target = {}
+  for(var key in count){
+    if(Object.prototype.hasOwnProperty.call(count,key)){
+      target[key] = count[key]
+    }
+  }
+  return target
+}
+
+/--------------------------------------------------------------------/
+
+//  浅拷贝
 
   function cloneShallow(source) {
     var target = {};
@@ -111,3 +152,5 @@
   console.log(test)
 </script>
 </html>
+
+

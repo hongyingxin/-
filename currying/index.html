@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+////  普通的add函数
+//function add(x,y) {
+//  return x + y
+//}
+////  Currying后
+//function curryingAdd(x) {
+//  return function (y) {
+//    return x + y
+//  }
+//}
+//curryingAdd(1)
+//  function add(num1,num2) {
+//    return num1 + num2
+//  }
+//
+//  function curriedAdd(num2) {
+//    return add(5,num2)
+//  }
+//
+//  alert(add(2,3))
+//  alert(curriedAdd(3))
+
+//  function curry(fn) {
+//    console.log('+++++++++++')
+//    console.log(arguments)
+//    var  args = Array.prototype.slice.call(arguments,1)
+//    return function () {
+//      var innerArgs = Array.prototype.slice.call(arguments)
+//      var finalArgs = args.concat(innerArgs)
+//      return fn.apply(null,finalArgs)
+//    }
+//  }
+//
+//  function add(num1,num2) {
+//    return num1 + num2
+//  }
+//
+//  var curriedAdd = curry(add,5)
+//  alert(curriedAdd(3))
+
+
+
+  /*提前确认*/
+//  var on =  function (element,event,handler) {
+//    if(document.addEventListener){
+//      if(element && event && handler){
+//        element.addEventListener(event,handler,false)
+//      }
+//    }else{
+//      if(element && event && handler){
+//        element.attachEvent('on' + event,handler)
+//      }
+//    }
+//  }
+//
+//  var on = (function () {
+//    if(document.addEventListener){
+//      return function (element,event,handler) {
+//        if(element && event && handler){
+//          element.addEventListener(event,handler,false)
+//        }
+//      }
+//    }else{
+//      return function (element,event,handler) {
+//        if(element && event && handler){
+//          element.attachEvent('on' + event,handler)
+//        }
+//      }
+//    }
+//  })()
+//
+//  var on = function (isSupport,element,event,handler) {
+//    isSupport = isSupport || document.addEventListener;
+//    if(isSupport){
+//      return element.addEventListener(event,handler,false)
+//    }else{
+//      return element.attachEvent('on' + event,handler)
+//    }
+//  }
+  
+  var processor = {
+    timeoutId: null,
+    //实际进行处理的方法
+    performProcessing:function () {
+      
+    },
+    //初始化处理调用的方法
+    process:function () {
+      clearTimeout(this.timeoutId);
+      var that = this;
+      this.timeoutId = setTimeout(function () {
+        that.performProcessing();
+      },100)
+    }
+  }
+</script>
+</html>
