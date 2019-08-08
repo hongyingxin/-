@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>获取地址栏中某个数的值</title>
+</head>
+<body>
+
+</body>
+<script>
+  function getUrl() {
+    let url = window.location.href()
+    let UrlArray = url.split('?')
+    if(UrlArray[0] == url){
+      return ''
+    }
+    let obj = {}
+    let arr = UrlArray[1].split('&')
+    for(let i = 0; i < arr.length; i++){
+      let arg = arr[i].split('=')
+    }
+  }
+</script>
+</html>
