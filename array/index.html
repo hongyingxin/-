@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Array类型</title>
+</head>
+<body>
+
+</body>
+<script>
+//  创建数组的基本方法有两种
+//  第一种是使用Array构造函数
+var colors = new Array();
+//  另一种是使用数组字面量表示法
+var colors = ["red", "blue", "green"]
+
+//  数组的检测
+//  1.使用instanceof操作符
+  if(colors instanceof Array){
+
+  }
+//  2.使用Array.isArray()
+  if(Array.isArray(colors)){
+
+  }
+
+//  转换方法
+//  所有对象都具有toLocaleString()、toString()、valueOf()
+
+//  数组一些操作方法
+//  Array.from()方法从一个类似数组或可迭代对象中创建一个新的，浅拷贝的数组示例
+//  String
+  Array.from('foo')   //["f","o","o"]
+//  Set
+  let s= new Set(['foo', window])
+  Array.from(s)   //['foo', window]
+
+
+
+//  下面的这些方法会改变调用对象自身的值：
+
+//  在数组内部，将一段元素序列拷贝到另一段元素序列上，覆盖原有的值
+  Array.prototype.copyWithin()
+//  将数组中指定区间的所有元素的值，都替换成某个固定的值
+  Array.prototype.fill()
+//  在数组的末尾增加一个或多个元素
+  Array.prototype.push()
+//  删除数组的最后一个元素
+  Array.prototype.pop()
+//  在数组的开头增加一个或多个元素
+  Array.prototype.unshift()
+//  删除数组的第一个元素
+  Array.prototype.shift()
+//  对数组元素进行排序
+  Array.prototype.sort()
+//  颠倒数组中元素的排列顺序
+  Array.prototype.reverse()
+//  在任意的位置给数组添加或删除任意个元素
+  Array.prototype.splice()
+
+//  下面的这些方法不会改变调用它们的对象的值：
+
+//  返回一个有当前数组和其他若干个数组组成的新数组
+  Array.prototype.concat()
+//  连接所有数组元素组成一个字符串
+  Array.prototype.join()
+//  抽取当前数组中的一段元素组成一个新数组
+  Array.prototype.slice()
+//  判断当前数组是否包含某指定的值，如果是返回true，否则返回false
+  Array.prototype.includes()
+//  返回数组中第一个与指定值相等的元素的索引，如果找不到这样的元素，则返回-1
+  Array.prototype.indexOf()
+//  返回一个又所有数组元素组合而成的字符串
+  Array.prototype.toString()
+
+
+//  遍历方法
+
+//  为数组中的每个元素执行一次回调函数
+  Array.prototype.forEach()
+//  将所有在过滤函数中返回true的数组元素放进一个新数组中并返回
+  Array.prototype.filter()
+//  返回一个数组迭代器对象，该迭代器会包含所有数组元素的键值对
+  Array.prototype.entries()
+//  返回一个数组迭代器对象，该迭代器会包含所有数组元素的键
+  Array.prototype.keys()
+//  返回一个数组迭代器对象，该迭代器会包含所有数组元素的值
+  Array.prototype.values()
+//  返回一个回调函数的返回值组成的新数组
+  Array.prototype.map()
+//  如果数组中的每个元素都满足测试函数，则返回true，否则返回false
+  Array.prototype.every()
+//  如果数组中至少有一个元素满足测试函数，则返回true，否则返回false
+  Array.prototype.some()
+//  找到第一个满足测试函数的元素并返回那个元素的值，如果找不到，则返回undefined
+  Array.prototype.find()
+//  找到第一个满足测试函数的元素并返回那个元素的索引，如果找不到，则返回-1
+  Array.prototype.findIndex()
+//  从左到右为每个数组元素执行一次回调函数，并把上次回调函数的返回值放在一个暂存器中传给下次回调函数，并返回最后一次回调函数的返回值
+  Array.prototype.reduce()
+//  从右到左为每个数组元素执行一次回调函数，并把上次回调函数的返回值放在一个暂存器中传给下次回调函数，并返回最后一次回调函数的返回值。
+  Array.prototype.reduceRight()
+</script>
+</html>
